@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+	<string name="fugitives">Fugitivos</string>
+	<string name="captured">Capturados</string>
+	<string name="add">Agregar</string>
+	<string name="capture">Capturados</string>
+	<string name="delete">Eliminar</string>
+	<string name="busted">Busted!</string>
+	<string name="still_at_large">Still At Large</string>
+	<string name="new_fugitive">New Fugitive</string>
+</resources>
