@@ -64,6 +64,15 @@
 			height:'auto'
 		}));
 		
+		var cameraButton = Ti.UI.createButton({
+			title:L('takepicture'),
+			top:10,
+			height:40,
+			width:200
+		});
+		
+		win.add(cameraButton);
+		
 		if (!_bounty.captured) {
 			var captureButton = Ti.UI.createButton({
 				title:L('capture'),
@@ -78,9 +87,9 @@
 			bh.db.bust(_bounty.id);
 			
 			// Le decimos al mundo que lo hemos acapturado
-			bh.net.bustFugitive(Ti.Platform.id, function(data){
-				alert('algo');
-			});
+			// bh.net.bustFugitive(Ti.Platform.id, function(data){
+				// alert('algo');
+			// });
 			
 			win.close();
 		});
