@@ -113,5 +113,14 @@ Ti.App.fireEvent("databaseUpdated");
 };
 
 
+if(!Ti.App.Properties.hasProperty('seeded')){
+	bh.net.getFugitives(function(data){
+		for (var i = data.length - 1; i >= 0; i--){
+		  bh.db.add(data[i].name);
+		};
+	});
+}
+
+Ti.App.Properties.setString('seeded', 'yuppers');
 
 })();
