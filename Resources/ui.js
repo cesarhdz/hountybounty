@@ -77,6 +77,11 @@
 		captureButton.addEventListener('click', function(e){
 			bh.db.bust(_bounty.id);
 			
+			// Le decimos al mundo que lo hemos acapturado
+			bh.net.bustFugitive(Ti.Platform.id, function(data){
+				alert('algo');
+			});
+			
 			win.close();
 		});
 		

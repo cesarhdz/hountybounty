@@ -3,13 +3,13 @@
  */
 
 (function(){
-	th.net = {};
+	bh.net = {};
 	
 	var serverURL = 'http://bountyhunterapp.appspot.com/bounties';
 	
 	
 	// Funcion para determinar los fugitivos desde un servidor remoto
-	th.net.getFugitives = function(_cb){
+	bh.net.getFugitives = function(_cb){
 		
 		var xhr = Ti.Network.createHTTPClient();
 		xhr.onload = function(){
@@ -24,7 +24,7 @@
 	}
 	
 	// Función pora cambiar el estado de un fugitivo
-	th.net.bustFugitive = function(_udid, _cb){
+	bh.net.bustFugitive = function(_udid, _cb){
 		
 		Ti.App.info('Busting Fugitive ' + _udid);
 		
