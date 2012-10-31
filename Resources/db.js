@@ -8,7 +8,7 @@ bh.db = {};
 
 var db = Ti.Database.open('TiBountyHunter');
 
-db.execute('CREATE TABLE IF NOT EXISTS fugitives(id INTEGER PRIMARY KEY, name TEXT, captured INTEGER);');
+db.execute('CREATE TABLE IF NOT EXISTS fugitives(id INTEGER PRIMARY KEY, name TEXT, captured INTEGER, url TEXT);');
 
 db.close();
 
@@ -57,6 +57,17 @@ db.close();
 return fugitiveList;
 
 };
+
+/*
+ * Agregamos una fotografia
+ */
+bh.db.addPhoto = function(_id, _url){
+	var db = Ti.Database.open('TiBountyHunter');
+	db.execute("UPDATE fugitives SET url = ? WHERE id = ?", _url, _id);
+	db.close();
+	
+	Ti.App.fireEvent('databaseUpdated');
+}
 
 
 

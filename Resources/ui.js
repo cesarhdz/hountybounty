@@ -71,6 +71,45 @@
 			width:200
 		});
 		
+		// Agregamos la imagen
+		var imgView = Ti.UI.createImageView({
+			backgroundColor : 'gray'
+			,height : 150
+			,width : 150
+			,top : 10
+			,url : (_bounty.url) ? _bounty.url : 'http://placehold.it/150x150&text=No+Picture'
+			
+		});
+		
+	
+		
+		
+		win.add(imgView);
+		
+		// Mostrar la càmara al hacer click
+		cameraButton.addEventListener('click', function(){
+			Ti.Media.openPhotoGallery({
+				success : function(e){
+					var img = e.media;
+					imgView.image = img;
+					
+					var f = Ti.Filesystem.getFile(
+						Ti.Filesystem.applicationDataDirectory, 'photo' + _bounty.id + '.png'
+					);
+					
+					f.write(img);
+					
+					
+					bh.db.addPhoto(_bounty.id, f.nativePath);
+					
+					alert(f.nativePath);
+				}
+				,cancel : function(e){
+					alert('Es necesario que tomes una fotografia')
+				}
+			});
+		});
+		
 		win.add(cameraButton);
 		
 		if (!_bounty.captured) {
