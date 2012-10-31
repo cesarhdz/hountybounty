@@ -17,7 +17,21 @@
 				win.close();
 			});
 			win.setRightNavButton(b);
-		}
+		};
+		
+		
+		var input = Ti.UI.createTextField({
+			height : 40
+			,width : 250
+			,borderStyle : Ti.UI.INPUT_BORDERSTYLE_ROUNDED
+		});
+		
+		var save = Ti.UI.createButton({
+			title : L('save')
+		})
+		
+		win.add(input);
+		win.add(save);
 		
 		return win;
 	};
