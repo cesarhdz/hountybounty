@@ -19,7 +19,9 @@
 			win.setRightNavButton(b);
 		};
 		
-		
+		/*
+		 * Creamos formulario para agregar nuevo fugitivo
+		 */
 		var input = Ti.UI.createTextField({
 			height : 40
 			,width : 250
@@ -29,6 +31,15 @@
 		var save = Ti.UI.createButton({
 			title : L('save')
 		})
+		
+		
+		/*
+		 * Cuando se de clik, guardamos
+		 */
+		save .addEventListener('click', function(){
+			bh.db.add(input.value);
+			win.close();
+		});
 		
 		win.add(input);
 		win.add(save);
@@ -84,16 +95,12 @@
 		
 		function populateData() {
 			//use dummy data for now...
-			var results = [
-				{title:'Jeff Haynie', hasChild:true, captured:false},
-				{title:'Nolan Wright', hasChild:true, captured:false},
-				{title:'Marshall Culpepper', hasChild:true, captured:true},
-				{title:'Don Thorp', hasChild:true, captured:false},
-				{title:'Blain Hamon', hasChild:true, captured:true}
-			];
+			var results = bh.db.list(_captured);
 			
 			tv.setData(results);
 		}
+		
+		Ti.App.addEventListener('dbUpdate', populateData);
 		
 		populateData();
 		

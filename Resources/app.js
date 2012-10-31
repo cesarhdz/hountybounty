@@ -3,6 +3,7 @@ Titanium.UI.setBackgroundColor('#ffffff');
 var bh = {}; //`bh` is our app's namespace
 Ti.include( //we'll be including all the files for our namespace in the root app context
 	'ui.js'
+	,'db.js'
 );
 
 //Use our custom UI constructors to build the app's UI
