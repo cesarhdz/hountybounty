@@ -74,6 +74,12 @@
 			win.add(captureButton);
 		}
 		
+		captureButton.addEventListener('click', function(e){
+			bh.db.bust(_bounty.id);
+			
+			win.close();
+		});
+		
 		var deleteButton = Ti.UI.createButton({
 			title:L('delete'),
 			top:10,
@@ -81,6 +87,11 @@
 			width:200
 		});
 		win.add(deleteButton);
+		
+		deleteButton.addEventListener('click', function(){
+			bh.db.del(_bounty.id);
+			win.close();
+		});
 		
 		return win;
 	};
@@ -100,7 +111,7 @@
 			tv.setData(results);
 		}
 		
-		Ti.App.addEventListener('dbUpdate', populateData);
+		Ti.App.addEventListener('databaseUpdated', populateData);
 		
 		populateData();
 		
